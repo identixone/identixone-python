@@ -74,7 +74,8 @@ For example, create source:
 .. code:: python
 
    response = client.sources.create(name='source_name')
-   # response = {"id": 1, "name": "source_name", "pps_timestamp": False, ... }
+   response.json()
+   # {"id": 1, "name": "source_name", "pps_timestamp": False, ... }
 
 Or list some records with filters:
 
@@ -89,7 +90,8 @@ Or list some records with filters:
         new=True, nm=False, junk=False, exact=False,
         ha=False, det=False, period_start=period_start,
         period_end=period_end)
-    # response = {"result": "ok", "totalqty": 0, "records": [], "sources": []}
+    response.json()
+    # {"result": "ok", "totalqty": 0, "records": [], "sources": []}
 
 Or even compare two faces how similar they are:
 
@@ -101,7 +103,8 @@ Or even compare two faces how similar they are:
         photo1, photo2,
         liveness_photo1=False, liveness_photo2=False,
         conf=Conf.JUNK)
-    # response = {"similar": True, "conf": "ha", "liveness_photo1": False, "liveness_photo2": True}
+    response.json()
+    # {"similar": True, "conf": "ha", "liveness_photo1": False, "liveness_photo2": True}
 
 Full examples are inside `examples.py` file in the root of this repo.
 
