@@ -6,7 +6,7 @@ identixone-python
 .. image:: https://secure.travis-ci.org/identixone/identixone-python.png?branch=master
    :target: https://travis-ci.org/identixone/identixone-python
 .. image:: https://readthedocs.org/projects/identixone/badge/?version=latest
-   :target: https://identixone.readthedocs.io/en/latest/?badge=latest
+   :target: https://identixone-python.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 .. image:: https://pyup.io/repos/github/identixone/identixone/shield.svg
    :target: https://pyup.io/repos/github/identixone/identixone/
@@ -15,7 +15,7 @@ identixone-python
 A Python package for interacting with the Identix.one API
 
 * Free software: MIT license
-* Documentation: https://identixone.readthedocs.io
+* Documentation: https://identixone-python.readthedocs.io/
 
 
 Installation
