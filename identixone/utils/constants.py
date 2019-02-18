@@ -1,0 +1,3 @@
+HTTP_CLIENT_TIMEOUT = (4, 15)
+HTTP_CLIENT_BASE_URL = 'https://api.identix.one'
+SUPPORTED_API_VERSIONS = (1,)
