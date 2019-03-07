@@ -10,7 +10,8 @@ from identixone.utils.environment import env_var
 
 class Client(object):
 
-    def __init__(self, token=None, version=None, http_client=None, environment=None):
+    def __init__(self, token=None, version=None,
+                 http_client=None, environment=None):
         """
         Initialize Client with credentials and optional http client.
         """
@@ -22,7 +23,7 @@ class Client(object):
             raise IdentixOneException(
                 'Version must be provided. Valid choices are: {}'.format(
                     str(constants.SUPPORTED_API_VERSIONS)))
-        
+
         if self.version not in constants.SUPPORTED_API_VERSIONS:
             raise IdentixOneException(
                 'Invalid version. Valid choices are: {}'.format(

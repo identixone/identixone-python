@@ -28,7 +28,7 @@ class TestAPIClient(unittest.TestCase):
         os.environ['IDENTIXONE_TOKEN'] = '123lskdfjldksjf123'
         client = Client(version='1')
         self.assertEqual(client.token, '123lskdfjldksjf123')
-    
+
     def test_version_get_from_environ(self):
         os.environ['IDENTIXONE_VERSION'] = '1'
         client = Client(token='adflsdkfjsakldfj')
