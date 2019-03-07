@@ -22,7 +22,7 @@ class Client(object):
             raise IdentixOneException(
                 'Version must be provided. Valid choices are: {}'.format(
                     str(constants.SUPPORTED_API_VERSIONS)))
-        print(type(self.version))
+        
         if self.version not in constants.SUPPORTED_API_VERSIONS:
             raise IdentixOneException(
                 'Invalid version. Valid choices are: {}'.format(
