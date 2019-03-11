@@ -1,5 +1,5 @@
 import os
-
+import inspect
 from importlib import import_module
 
 from identixone.base.exceptions import IdentixOneException
@@ -32,8 +32,13 @@ class Client(object):
         if not self.token:
             raise IdentixOneException('API token must be provided.')
 
-        self.http_client = http_client or IdentixOneHttpClient(
-            auth_token=self.token)
+        if http_client:
+            if not inspect.isclass(http_client):
+                raise IdentixOneException(
+                        "Variable http_client has to be class type")
+            self.http_client = http_client(auth_token=self.token)
+        else:
+            self.http_client = IdentixOneHttpClient(auth_token=self.token)
 
     def dynamic_import(self, module_path, attribute):
         version_str = 'v{}'.format(self.version)
