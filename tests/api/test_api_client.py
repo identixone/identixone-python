@@ -33,3 +33,17 @@ class TestAPIClient(unittest.TestCase):
         os.environ['IDENTIXONE_VERSION'] = '1'
         client = Client(token='adflsdkfjsakldfj')
         self.assertEqual(client.version, '1')
+
+    def test_create_instance_http_client(self):
+        class A:
+            def __init__(self, auth_token):
+                self.token = auth_token
+
+        client = Client(token='sdfdsf',
+                        version='1', http_client=A)
+        self.assertTrue(isinstance(client.http_client, A))
+
+    def test_http_client_raises_exception(self):
+        a = 'http_client'
+        with self.assertRaises(IdentixOneException):
+            Client(token='sdfdsf', version='1', http_client=a)
