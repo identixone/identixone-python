@@ -2,4 +2,4 @@
 
 __author__ = """Identix One"""
 __email__ = 'dev@identix.one'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
