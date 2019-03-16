@@ -6,7 +6,8 @@ from requests import Response, Session
 from unittest.mock import patch
 
 from identixone.api.client import Client
-from identixone.base.choices import Conf, NotificationTransport
+from identixone.base.choices import (
+    Conf, NotificationHTTPMethod, NotificationTransport)
 
 
 class TestAPIModule(unittest.TestCase):
@@ -70,6 +71,7 @@ class TestAPINotificationsModule(TestAPIModule):
         response = self.client.notifications.create(
             name='name', is_active=True,
             transport=NotificationTransport.WEBHOOK,
+            http_method=NotificationHTTPMethod.GET,
             conf_thresholds=[Conf.EXACT, Conf.HA, Conf.JUNK],
             destination_url='https://api.identix.one/')
         self.assertEqual(response.json(), resp_body)
@@ -151,7 +153,8 @@ class TestAPIRecordsModule(TestAPIModule):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.records.list(new=True, junk=False, ha=False)
+        response = self.client.records.list(
+            new=True, junk=False, ha=False, qty=10)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -246,13 +249,38 @@ class TestAPIUsersModule(TestAPIModule):
     @patch.object(Session, 'send')
     def test_users_list_tokens(self, mocked_send):
         status_code = 200
-        resp_body = {'key': 'value'}
+        resp_body = [{'key': 'value'}]
         mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.users.list_tokens(permanent=False)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
+        resp_body = []
+        mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.users.list_tokens(permanent=True)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        resp_body = [{'key2': 'value2'}]
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.users.list_tokens()
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+    @patch.object(Session, 'send')
+    def test_users_bulk_delete_tokens(self, mocked_send):
+        status_code = 204
+        resp_body = None
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.users.bulk_delete()
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        response = self.client.users.bulk_delete(permanent=False)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        response = self.client.users.bulk_delete(permanent=True)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 

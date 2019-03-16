@@ -2,7 +2,8 @@
 import datetime
 
 from identixone.api import Client
-from identixone.base.choices import Conf, NotificationTransport
+from identixone.base.choices import (
+    Conf, NotificationHTTPMethod, NotificationTransport)
 
 token = 'token'
 client = Client(token=token, version=1)
@@ -111,6 +112,21 @@ def delete_token():
     print(r.json())
 
 
+def bulk_delete_tokens():
+    r = client.users.bulk_delete()
+    print(r.status_code)
+
+
+def bulk_delete_permanent_tokens():
+    r = client.users.bulk_delete(permanent=True)
+    print(r.status_code)
+
+
+def bulk_delete_temporary_tokens():
+    r = client.users.bulk_delete(permanent=False)
+    print(r.status_code)
+
+
 def idxid_records():
     idxid = 'idxid'
     r = client.records.get(idxid=idxid)
@@ -146,7 +162,8 @@ def delete_notifications():
 def create_notifications():
     r = client.notifications.create(
         name='exact_and_ha', is_active=True,
-        transport=NotificationTransport.WEBSOCKETS_SERVER,
+        transport=NotificationTransport.WEBHOOK,
+        http_method=NotificationHTTPMethod.POST,
         conf_thresholds=[Conf.EXACT, Conf.HA])
     print(r.json())
 

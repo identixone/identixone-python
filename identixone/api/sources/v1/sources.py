@@ -1,3 +1,6 @@
+from identixone.base.choices import Conf
+
+
 class Sources(object):
 
     def __init__(self, http_client):
@@ -19,7 +22,10 @@ class Sources(object):
                manual_create_facesize_threshold=None,
                manual_create_on_ha=False, manual_create_on_junk=False,
                manual_check_asm=True, manual_create_liveness_only=False,
-               manual_check_liveness=False):
+               manual_check_liveness=False,
+               store_images_for_confs=[
+                   Conf.NEW, Conf.EXACT, Conf.HA, Conf.JUNK,
+                   Conf.NM, Conf.DET, Conf.REINIT]):
         data = {
             'name': name,
             'pps_timestamp': pps_timestamp,
@@ -41,6 +47,7 @@ class Sources(object):
             'manual_check_asm': manual_check_asm,
             'manual_create_liveness_only': manual_create_liveness_only,
             'manual_check_liveness': manual_check_liveness,
+            'store_images_for_confs': store_images_for_confs
         }
         return self.http_client.post('v1/sources/', data=data)
 

@@ -1,6 +1,7 @@
 import os
 import unittest
 
+from identixone.base.exceptions import ImproperlyConfigured
 from identixone.utils.environment import env_var, ENV_BASE_PREFIX
 
 
@@ -34,5 +35,5 @@ class TestEnvironmentVar(unittest.TestCase):
 
     def test_invalid_environ_raises_exception(self):
         key = 'KEY'
-        with self.assertRaises(RuntimeError):
+        with self.assertRaises(ImproperlyConfigured):
             env_var([], key)

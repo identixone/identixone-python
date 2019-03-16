@@ -1,3 +1,6 @@
+from identixone.base.choices import Conf
+
+
 class Persons(object):
 
     def __init__(self, http_client):
@@ -24,9 +27,8 @@ class Persons(object):
         return self.http_client.post(
             'v1/persons/search/', data=data, files=files)
 
-    def reinit_image(self, idxid, photo, source, conf='ha', facesize=None,
+    def reinit_image(self, idxid, photo, source, conf=Conf.HA, facesize=None,
                      liveness=False, reinit_liveness_only=False):
-        # TODO: conf choices
         data = {
             'source': source,
             'conf': conf,

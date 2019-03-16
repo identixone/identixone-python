@@ -11,6 +11,10 @@ from identixone.utils import constants
 
 
 class IdentixOneHttpClient(object):
+    """
+    Http client used to make actual HTTP requests to Identix.one API.
+    You can subclass it and provide new class as http_client param into Client.
+    """
 
     def __init__(self, auth_token, request_hooks=None, timeout=None):
         self.auth = IdentixOneAuth(token=auth_token)

@@ -16,6 +16,7 @@ A Python package for interacting with the Identix.one API
 
 * Free software: MIT license
 * Documentation: https://identixone-python.readthedocs.io/
+* Current supported most recent API version: **1.9.1**
 
 
 Installation

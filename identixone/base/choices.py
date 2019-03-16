@@ -4,6 +4,11 @@ class NotificationTransport(object):
     WEBSOCKETS_SERVER = 2
 
 
+class NotificationHTTPMethod(object):
+    POST = 0
+    GET = 1
+
+
 class Conf(object):
     NEW = 'new'
     EXACT = 'exact'

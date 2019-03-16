@@ -1,3 +1,6 @@
+from identixone.base.choices import Conf
+
+
 class Utility(object):
 
     def __init__(self, http_client):
@@ -11,8 +14,8 @@ class Utility(object):
         files = {'photo': photo}
         return self.http_client.post('v1/utility/liveness/', files=files)
 
-    def compare(self, photo1, photo2, liveness_photo1, liveness_photo2, conf):
-        # TODO: choices of conf and add default
+    def compare(self, photo1, photo2, liveness_photo1, liveness_photo2,
+                conf=Conf.HA):
         files = {'photo1': photo1, 'photo2': photo2}
         data = {
             'liveness_photo1': liveness_photo1,

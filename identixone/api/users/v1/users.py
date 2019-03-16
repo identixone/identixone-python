@@ -32,3 +32,9 @@ class Users(object):
     def delete_token(self, id_or_token):
         return self.http_client.delete(
             'v1/users/tokens/{}/'.format(id_or_token))
+
+    def bulk_delete(self, permanent=None):
+        params = None
+        if permanent is not None:
+            params = {'permanent': permanent}
+        return self.http_client.delete('v1/users/tokens/', params=params)
