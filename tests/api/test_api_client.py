@@ -1,6 +1,6 @@
+import os
 import unittest
 import uuid
-import os
 
 from identixone.api.client import Client
 from identixone.base.exceptions import IdentixOneException

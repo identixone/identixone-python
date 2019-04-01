@@ -15,9 +15,11 @@ identixone-python
 A Python package for interacting with the Identix.one API
 
 * Free software: MIT license
-* Documentation: https://identixone-python.readthedocs.io/
-* Current supported most recent API version: **1.9.1**
-* Current stable package version: **0.1.1**
+* Package documentation: https://identixone-python.readthedocs.io/
+* API documentation: https://kb.identix.one/
+* API changelog: https://kb.identix.one/#/apichangelog
+* Current supported most recent API version: **1.10.0**
+* Current stable package version: **0.1.2**
 
 
 Installation
@@ -62,11 +64,21 @@ First of all, specify your API token and API version in `Client`:
 
 .. code:: python
 
-   from identixone.api import Client
+    from identixone.api import Client
 
-   version = 1
-   token = 'XXX'
-   client = Client(token, version)
+    version = 1
+    token = 'XXX'
+    client = Client(token, version)
+
+You can also configure `Client` using environment variables with prefix `IDENTIXONE_` and uppercase key (e.g. TOKEN, VERSION):
+
+.. code:: python
+
+    from identixone.api import Client
+
+    os.environ['IDENTIXONE_TOKEN'] = 'XXX'
+    os.environ['IDENTIXONE_VERSION'] = '1'
+    client = Client(token, version)
 
 Now just make calls using `client` instance as if you were interacting with HTTP API.
 
@@ -75,9 +87,9 @@ For example, create source:
 
 .. code:: python
 
-   response = client.sources.create(name='source_name')
-   response.json()
-   # {"id": 1, "name": "source_name", "pps_timestamp": False, ... }
+    response = client.sources.create(name='source_name')
+    response.json()
+    # {"id": 1, "name": "source_name", "pps_timestamp": False, ... }
 
 Or list some records with filters:
 

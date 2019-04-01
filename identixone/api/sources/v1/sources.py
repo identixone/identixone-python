@@ -6,8 +6,8 @@ class Sources(object):
     def __init__(self, http_client):
         self.http_client = http_client
 
-    def list(self):
-        return self.http_client.get('v1/sources/')
+    def list(self, **kwargs):
+        return self.http_client.get('v1/sources/', params=kwargs)
 
     def get(self, source_id):
         return self.http_client.get('v1/sources/{}/'.format(source_id))

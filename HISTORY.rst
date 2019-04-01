@@ -1,6 +1,16 @@
 History
 =================
 
+0.1.2 (2019-04-01)
+------------------
+
+* API Changelog is now constantly updated here: https://kb.identix.one/#/apichangelog
+* Updated documentation to show how to configure client with env variables
+* Records endpoints are now deprecated
+* Added new Entries and Entries Stats endpoints for RESTful manipulation with data (meant to replace and enhance records functionality)
+* Added new Person Entries endpoint: create new person by providing id of NM entry
+* Added examples of newly added endpoints
+
 0.1.1 (2019-03-16)
 ------------------
 

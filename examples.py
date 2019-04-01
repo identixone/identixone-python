@@ -10,6 +10,7 @@ client = Client(token=token, version=1)
 
 
 def list_records():
+    # DEPRECATED
     period_start = datetime.datetime(year=2019, month=1, day=13, hour=19,
                                      minute=20, second=1)
     period_end = datetime.datetime(year=2019, month=1, day=22, hour=19,
@@ -90,6 +91,11 @@ def persons_reinit_id():
     print(r.json())
 
 
+def persons_entry():
+    r = client.persons.entry(id=1)
+    print(r.json())
+
+
 def persons_delete():
     r = client.persons.delete(idxid='idxid')
     print(r.json())
@@ -128,15 +134,49 @@ def bulk_delete_temporary_tokens():
 
 
 def idxid_records():
+    # DEPRECATED
     idxid = 'idxid'
     r = client.records.get(idxid=idxid)
     print(r.json())
 
 
 def entry_delete():
+    # DEPRECATED
     entry_id = 1
     r = client.records.entry_delete(entry_id)
     print(r.status_code)
+
+
+def entries():
+    r = client.entries.list(conf='ha,exact,junk', limit=10, offset=10)
+    print(r.json())
+
+
+def entries_detail():
+    idxid = 'idxid'
+    date_from = datetime.datetime(year=2019, month=1, day=13, hour=19,
+                                     minute=20, second=1)
+    date_to = datetime.datetime(year=2019, month=1, day=22, hour=19,
+                                   minute=20, second=1)
+    r = client.entries.list(idxid=idxid, date_from=date_from, date_to=date_to)
+    print(r.json())
+
+
+def entries_delete():
+    entry_id = 1
+    r = client.entries.delete(entry_id)
+    print(r.status_code)
+
+
+def stats_idxid():
+    idxid = 'idxid'
+    r = client.entries.stats_idxid(idxid=idxid)
+    print(r.json())
+
+
+def stats_sources():
+    r = client.entries.stats_sources()
+    print(r.json())
 
 
 def auth_create_token():

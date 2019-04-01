@@ -3,8 +3,9 @@ class Notifications(object):
     def __init__(self, http_client):
         self.http_client = http_client
 
-    def list(self):
-        return self.http_client.get('v1/settings/notifications/')
+    def list(self, **kwargs):
+        return self.http_client.get(
+            'v1/settings/notifications/', params=kwargs)
 
     def create(self, name, is_active, transport, destination_url=None,
                conf_thresholds=None, age_from=None, age_to=None, sex=None,

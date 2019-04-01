@@ -21,6 +21,16 @@ class Persons(object):
         files = {'photo': photo}
         return self.http_client.post('v1/persons/', data=data, files=files)
 
+    def entry(self, id, facesize=None, create_on_ha=False,
+              create_on_junk=False):
+        data = {
+            'id': id,
+            'facesize': facesize,
+            'create_on_ha': create_on_ha,
+            'create_on_junk': create_on_junk
+        }
+        return self.http_client.post('v1/persons/entry/', data=data)
+
     def search(self, photo, asm=False, liveness=False):
         data = {'asm': asm, 'liveness': liveness}
         files = {'photo': photo}
