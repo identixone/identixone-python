@@ -14,8 +14,8 @@ class Utility(object):
         files = {'photo': photo}
         return self.http_client.post('v1/utility/liveness/', files=files)
 
-    def compare(self, photo1, photo2, liveness_photo1, liveness_photo2,
-                conf=Conf.HA):
+    def compare(self, photo1, photo2,
+                liveness_photo1=False, liveness_photo2=False, conf=Conf.HA):
         files = {'photo1': photo1, 'photo2': photo2}
         data = {
             'liveness_photo1': liveness_photo1,

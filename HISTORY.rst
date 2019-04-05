@@ -1,6 +1,12 @@
 History
 =================
 
+0.1.3 (2019-04-05)
+------------------
+
+* Fixed several API calls where default values should not be provided.
+* Fixed places where default values were different than default API values.
+
 0.1.2 (2019-04-01)
 ------------------
 

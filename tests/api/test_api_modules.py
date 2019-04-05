@@ -101,7 +101,7 @@ class TestAPINotificationsModule(TestAPIModule):
 class TestAPIPersonsModule(TestAPIModule):
 
     @patch.object(Session, 'send')
-    def test_create_persons(self, mocked_send):
+    def test_create_persons_no_none_values_in_request(self, mocked_send):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
@@ -109,8 +109,29 @@ class TestAPIPersonsModule(TestAPIModule):
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertNotIn('name="asm"', sent_request_body)
+        self.assertNotIn('name="liveness"', sent_request_body)
+        self.assertNotIn('name="facesize"', sent_request_body)
+
     @patch.object(Session, 'send')
-    def test_search_persons(self, mocked_send):
+    def test_create_persons_fill_optional_values_in_request(self, mocked_send):
+        status_code = 200
+        resp_body = {'key': 'value'}
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.persons.create(
+            photo='photo', source='source',
+            asm=True, liveness=True, facesize=25000)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertIn('name="asm"', sent_request_body)
+        self.assertIn('name="liveness"', sent_request_body)
+        self.assertIn('name="facesize"', sent_request_body)
+
+    @patch.object(Session, 'send')
+    def test_search_persons_no_none_values_in_request(self, mocked_send):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
@@ -118,8 +139,26 @@ class TestAPIPersonsModule(TestAPIModule):
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertNotIn('name="asm"', sent_request_body)
+        self.assertNotIn('name="liveness"', sent_request_body)
+
     @patch.object(Session, 'send')
-    def test_reinit_image_persons(self, mocked_send):
+    def test_search_persons_fill_optional_values_in_request(self, mocked_send):
+        status_code = 200
+        resp_body = {'key': 'value'}
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.persons.search(
+            photo='photo', asm=True, liveness=True)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertIn('name="asm"', sent_request_body)
+        self.assertIn('name="liveness"', sent_request_body)
+
+    @patch.object(Session, 'send')
+    def test_reinit_image_persons_no_none_values_in_request(self, mocked_send):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
@@ -127,6 +166,25 @@ class TestAPIPersonsModule(TestAPIModule):
             idxid='1', photo='photo', source='source', conf=Conf.EXACT)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertNotIn('name="facesize"', sent_request_body)
+        self.assertNotIn('name="liveness"', sent_request_body)
+
+    @patch.object(Session, 'send')
+    def test_reinit_image_persons_fill_optional_values_in_request(self, mocked_send):
+        status_code = 200
+        resp_body = {'key': 'value'}
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.persons.reinit_image(
+            idxid='1', photo='photo', source='source', conf=Conf.EXACT,
+            liveness=True, facesize=25000)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body.decode('utf-8')
+        self.assertIn('name="facesize"', sent_request_body)
+        self.assertIn('name="liveness"', sent_request_body)
 
     @patch.object(Session, 'send')
     def test_reinit_id_persons(self, mocked_send):
@@ -308,14 +366,30 @@ class TestAPIUsersModule(TestAPIModule):
         self.assertEqual(response.status_code, status_code)
 
     @patch.object(Session, 'send')
-    def test_users_change_password(self, mocked_send):
+    def test_users_change_password_no_none_values_in_request(self, mocked_send):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.users.change_password(
-            password='p', password2='p', reset_tokens=False)
+            password='p', password2='p')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body
+        self.assertNotIn('reset_tokens', sent_request_body)
+
+    @patch.object(Session, 'send')
+    def test_users_change_password_reset_tokens_in_request(self, mocked_send):
+        status_code = 200
+        resp_body = {'key': 'value'}
+        mocked_send.return_value = self.response(resp_body, status_code)
+        response = self.client.users.change_password(
+            password='p', password2='p', reset_tokens=True)
+        self.assertEqual(response.json(), resp_body)
+        self.assertEqual(response.status_code, status_code)
+
+        sent_request_body = mocked_send.mock_calls[0][1][0].body
+        self.assertIn('reset_tokens', sent_request_body)
 
     @patch.object(Session, 'send')
     def test_users_list_tokens(self, mocked_send):
@@ -410,9 +484,7 @@ class TestAPIUtilityModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.utility.compare(
-            photo1='photo1', photo2='photo2',
-            liveness_photo1=False, liveness_photo2=False,
-            conf=Conf.JUNK)
+            photo1='photo1', photo2='photo2', conf=Conf.JUNK)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
