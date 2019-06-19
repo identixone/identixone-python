@@ -4,6 +4,7 @@ History
 0.1.4 (2019-06-20)
 ------------------
 
+* Removed Python 3.4 support
 * Library updated to the new (1.12) API version
 * Removed entries module
 * Fixed places where default values were different than default API values.
