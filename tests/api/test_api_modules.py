@@ -371,7 +371,8 @@ class TestAPIUsersModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.users.change_password(
-            password='p', password2='p')
+            old_password='p', password='new_password', password2='new_password'
+        )
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -384,7 +385,9 @@ class TestAPIUsersModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         response = self.client.users.change_password(
-            password='p', password2='p', reset_tokens=True)
+            old_password='p', password='new_password',
+            password2='new_password', reset_tokens=True
+        )
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
