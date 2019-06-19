@@ -214,46 +214,6 @@ class TestAPIPersonsModule(TestAPIModule):
         self.assertEqual(response.status_code, status_code)
 
 
-class TestAPIEntriesModule(TestAPIModule):
-
-    @patch.object(Session, 'send')
-    def test_list_entries(self, mocked_send):
-        status_code = 200
-        resp_body = {'key': 'value'}
-        mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.entries.list(
-            conf='new,exact,ha', limit=10)
-        self.assertEqual(response.json(), resp_body)
-        self.assertEqual(response.status_code, status_code)
-
-    @patch.object(Session, 'send')
-    def test_stats_idxid(self, mocked_send):
-        status_code = 200
-        resp_body = {'key': 'value'}
-        mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.entries.stats_idxid(idxid='1')
-        self.assertEqual(response.json(), resp_body)
-        self.assertEqual(response.status_code, status_code)
-
-    @patch.object(Session, 'send')
-    def test_stats_sources(self, mocked_send):
-        status_code = 200
-        resp_body = {'key': 'value'}
-        mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.entries.stats_sources(conf='new', limit=1000)
-        self.assertEqual(response.json(), resp_body)
-        self.assertEqual(response.status_code, status_code)
-
-    @patch.object(Session, 'send')
-    def test_delete_entry(self, mocked_send):
-        status_code = 204
-        resp_body = None
-        mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.entries.delete(id=1)
-        self.assertEqual(response.json(), resp_body)
-        self.assertEqual(response.status_code, status_code)
-
-
 class TestAPIRecordsModule(TestAPIModule):
 
     @patch.object(Session, 'send')
