@@ -20,8 +20,7 @@ class Conf(object):
 
 
 class Licence(object):
-    FREE = 'free'
     BASIC = 'basic'
     STANDARD = 'standard'
-    STANDARD_PLUS = 'standard_plus'
+    STANDARD_PLUS = 'standard+'
     ADVANCED = 'advanced'
