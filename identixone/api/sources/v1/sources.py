@@ -1,4 +1,4 @@
-from identixone.base.choices import Conf
+from identixone.base.choices import Conf, Licence
 
 
 class Sources(object):
@@ -26,9 +26,7 @@ class Sources(object):
                store_images_for_confs=[
                    Conf.NEW, Conf.EXACT, Conf.HA, Conf.JUNK,
                    Conf.NM, Conf.DET, Conf.REINIT],
-               license_type=None):
-        if license_type is None:
-            license_type = 'basic'
+               license_type=Licence.BASIC):
         data = {
             'name': name,
             'pps_timestamp': pps_timestamp,
