@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Yaroslav Ulanovich <yul@datacorp.ee>
+* Gleb Abroskin <gab@datacorp.ee>
