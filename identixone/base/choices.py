@@ -17,3 +17,10 @@ class Conf(object):
     NM = 'nm'
     DET = 'det'
     REINIT = 'reinit'
+
+
+class Licence(object):
+    BASIC = 'basic'
+    STANDARD = 'standard'
+    STANDARD_PLUS = 'standard+'
+    ADVANCED = 'advanced'

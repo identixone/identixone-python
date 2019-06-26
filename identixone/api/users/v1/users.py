@@ -6,8 +6,10 @@ class Users(object):
     def me(self):
         return self.http_client.get('v1/users/me/')
 
-    def change_password(self, password, password2, reset_tokens=None):
+    def change_password(self, old_password, password,
+                        password2, reset_tokens=None):
         data = {
+            'old_password': old_password,
             'password': password,
             'password2': password2,
             'reset_tokens': reset_tokens
