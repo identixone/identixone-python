@@ -78,11 +78,6 @@ class Client(object):
         return cls(self.http_client)
 
     @property
-    def entries(self):
-        cls = self.dynamic_import('identixone.api.entries', 'Entries')
-        return cls(self.http_client)
-
-    @property
     def notifications(self):
         cls = self.dynamic_import(
             'identixone.api.notifications', 'Notifications')

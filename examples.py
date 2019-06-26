@@ -147,38 +147,6 @@ def entry_delete():
     print(r.status_code)
 
 
-def entries():
-    r = client.entries.list(conf='ha,exact,junk', limit=10, offset=10)
-    print(r.json())
-
-
-def entries_detail():
-    idxid = 'idxid'
-    date_from = datetime.datetime(year=2019, month=1, day=13, hour=19,
-                                     minute=20, second=1)
-    date_to = datetime.datetime(year=2019, month=1, day=22, hour=19,
-                                   minute=20, second=1)
-    r = client.entries.list(idxid=idxid, date_from=date_from, date_to=date_to)
-    print(r.json())
-
-
-def entries_delete():
-    entry_id = 1
-    r = client.entries.delete(entry_id)
-    print(r.status_code)
-
-
-def stats_idxid():
-    idxid = 'idxid'
-    r = client.entries.stats_idxid(idxid=idxid)
-    print(r.json())
-
-
-def stats_sources():
-    r = client.entries.stats_sources()
-    print(r.json())
-
-
 def auth_create_token():
     r = client.auth.create_token()
     print(r.json())

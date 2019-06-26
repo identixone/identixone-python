@@ -1,4 +1,4 @@
-from identixone.base.choices import Conf
+from identixone.base.choices import Conf, Licence
 
 
 class Sources(object):
@@ -25,7 +25,8 @@ class Sources(object):
                manual_check_liveness=False,
                store_images_for_confs=[
                    Conf.NEW, Conf.EXACT, Conf.HA, Conf.JUNK,
-                   Conf.NM, Conf.DET, Conf.REINIT]):
+                   Conf.NM, Conf.DET, Conf.REINIT],
+               license_type=Licence.BASIC):
         data = {
             'name': name,
             'pps_timestamp': pps_timestamp,
@@ -47,7 +48,8 @@ class Sources(object):
             'manual_check_asm': manual_check_asm,
             'manual_create_liveness_only': manual_create_liveness_only,
             'manual_check_liveness': manual_check_liveness,
-            'store_images_for_confs': store_images_for_confs
+            'store_images_for_confs': store_images_for_confs,
+            'license_type': license_type,
         }
         return self.http_client.post('v1/sources/', data=data)
 

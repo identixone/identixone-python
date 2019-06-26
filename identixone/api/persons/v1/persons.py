@@ -7,7 +7,7 @@ class Persons(object):
         self.http_client = http_client
 
     def create(self, photo, source, facesize=None, asm=None, liveness=None,
-               create_on_ha=False, create_on_junk=False,
+               create_on_ha=None, create_on_junk=None,
                create_liveness_only=False):
         data = {
             'source': source,
