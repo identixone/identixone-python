@@ -9,18 +9,6 @@ token = 'token'
 client = Client(token=token, version=1)
 
 
-def list_records():
-    # DEPRECATED
-    period_start = datetime.datetime(year=2019, month=1, day=13, hour=19,
-                                     minute=20, second=1)
-    period_end = datetime.datetime(year=2019, month=1, day=22, hour=19,
-                                   minute=20, second=1)
-    r = client.records.list(new=True, nm=False, junk=False, exact=False,
-                            ha=False, det=False, period_start=period_start,
-                            period_end=period_end)
-    print(r.json())
-
-
 def sources_list():
     r = client.sources.list()
     print(r.json())
@@ -130,20 +118,6 @@ def bulk_delete_permanent_tokens():
 
 def bulk_delete_temporary_tokens():
     r = client.users.bulk_delete(permanent=False)
-    print(r.status_code)
-
-
-def idxid_records():
-    # DEPRECATED
-    idxid = 'idxid'
-    r = client.records.get(idxid=idxid)
-    print(r.json())
-
-
-def entry_delete():
-    # DEPRECATED
-    entry_id = 1
-    r = client.records.entry_delete(entry_id)
     print(r.status_code)
 
 
