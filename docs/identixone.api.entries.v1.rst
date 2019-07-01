@@ -1,13 +1,13 @@
-identixone.api.records.v1 package
+identixone.api.entries.v1 package
 =================================
 
 Submodules
 ----------
 
-identixone.api.records.v1.records module
+identixone.api.entries.v1.entries module
 ----------------------------------------
 
-.. automodule:: identixone.api.records.v1.records
+.. automodule:: identixone.api.entries.v1.entries
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,7 @@ identixone.api.records.v1.records module
 Module contents
 ---------------
 
-.. automodule:: identixone.api.records.v1
+.. automodule:: identixone.api.entries.v1
     :members:
     :undoc-members:
     :show-inheritance:

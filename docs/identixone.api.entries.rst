@@ -1,4 +1,4 @@
-identixone.api.records package
+identixone.api.entries package
 ==============================
 
 Subpackages
@@ -6,12 +6,12 @@ Subpackages
 
 .. toctree::
 
-    identixone.api.records.v1
+    identixone.api.entries.v1
 
 Module contents
 ---------------
 
-.. automodule:: identixone.api.records
+.. automodule:: identixone.api.entries
     :members:
     :undoc-members:
     :show-inheritance:

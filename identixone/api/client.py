@@ -89,13 +89,13 @@ class Client(object):
         return cls(self.http_client)
 
     @property
-    def records(self):
-        cls = self.dynamic_import('identixone.api.records', 'Records')
+    def sources(self):
+        cls = self.dynamic_import('identixone.api.sources', 'Sources')
         return cls(self.http_client)
 
     @property
-    def sources(self):
-        cls = self.dynamic_import('identixone.api.sources', 'Sources')
+    def entries(self):
+        cls = self.dynamic_import('identixone.api.entries', 'Entries')
         return cls(self.http_client)
 
     @property
