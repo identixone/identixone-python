@@ -19,7 +19,7 @@ A Python package for interacting with the Identix.one API
 * API documentation: https://kb.identix.one/
 * API changelog: https://kb.identix.one/#/apichangelog
 * Current supported most recent API version: **1.14.1**
-* Current stable package version: **0.1.6**
+* Current stable package version: **0.1.6.1**
 
 
 Installation
