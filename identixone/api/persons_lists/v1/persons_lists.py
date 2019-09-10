@@ -33,7 +33,7 @@ class PersonsLists:
 
     def exended_idxids_list(self, pl_id, idxids):
         data = {'idxids': idxids}
-        return self.http_client.get('v1/lists/persons/{}/idxids/extended/'.format(pl_id), data=data)
+        return self.http_client.get('v1/lists/persons/{}/idxids/extended/'.format(pl_id), data)
 
     def delete_idxids_in_lists(self, list_ids, idxids):
         data = {
