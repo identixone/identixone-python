@@ -55,8 +55,3 @@ class PersonLists:
 
     def delete_idxid_from_all_lists(self, idxid):
         return self.http_client.post('v1/lists/person/idxids/{}/all/'.format(idxid))
-
-
-
-
-
