@@ -457,7 +457,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.create('test_name')
+        response = self.client.persons_lists.create('test_name')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -467,7 +467,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.list()
+        response = self.client.persons_lists.list()
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -477,7 +477,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.get(32312123123)
+        response = self.client.persons_lists.get(32312123123)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -487,7 +487,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.update(32432432, 'test_name_2')
+        response = self.client.persons_lists.update(32432432, 'test_name_2')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -497,7 +497,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.list_delete(231232132)
+        response = self.client.persons_lists.delete(231232132)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -507,7 +507,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
 
-        response = self.client.person_lists.idxids_list(2344234324)
+        response = self.client.persons_lists.idxids_list(2344234324)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -517,7 +517,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         idxids = ['klsfjd39202', 'lksdfj23920']
-        response = self.client.person_lists.create_idxids(324324324, idxids)
+        response = self.client.persons_lists.create_idxids(324324324, idxids)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -527,7 +527,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         idxids = ['klsfjd39202', 'lksdfj23920']
-        response = self.client.person_lists.delete_idxids(324324324, idxids)
+        response = self.client.persons_lists.delete_idxids(324324324, idxids)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -537,7 +537,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         idxids = ['klsfjd39202', 'lksdfj23920']
-        response = self.client.person_lists.exended_idxids_list(324324324, idxids)
+        response = self.client.persons_lists.exended_idxids_list(324324324, idxids)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -548,7 +548,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         mocked_send.return_value = self.response(resp_body, status_code)
         pl_ids = [324324324, 12321]
         idxids = ['klsfjd39202', 'lksdfj23920']
-        response = self.client.person_lists._delete_idxids_in_lists(pl_ids, idxids)
+        response = self.client.persons_lists.delete_idxids_in_lists(pl_ids, idxids)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -559,7 +559,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         mocked_send.return_value = self.response(resp_body, status_code)
         pl_ids = [324324324, 12321]
         idxids = ['klsfjd39202', 'lksdfj23920']
-        response = self.client.person_lists.create_idxids_in_lists(pl_ids, idxids)
+        response = self.client.persons_lists.create_idxids_in_lists(pl_ids, idxids)
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -568,7 +568,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
-        response = self.client.person_lists.delete_all_idxids('dfdfklfgu34993')
+        response = self.client.persons_lists.delete_all_idxids('dfdfklfgu34993')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -578,7 +578,7 @@ class TestAPIPersonListsModule(TestAPIModule):
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
         pl_idx = [324324324, 12321]
-        response = self.client.person_lists.delete_idxid_from_lists(pl_idx, 'dfdfklfgu34993')
+        response = self.client.persons_lists.delete_idxid_from_lists(pl_idx, 'dfdfklfgu34993')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)
 
@@ -587,7 +587,6 @@ class TestAPIPersonListsModule(TestAPIModule):
         status_code = 200
         resp_body = {'key': 'value'}
         mocked_send.return_value = self.response(resp_body, status_code)
-        pl_idx = [324324324, 12321]
-        response = self.client.person_lists.delete_idxid_from_all_lists(pl_idx, 'dfdfklfgu34993')
+        response = self.client.persons_lists.delete_idxid_from_all_lists('dfdfklfgu34993')
         self.assertEqual(response.json(), resp_body)
         self.assertEqual(response.status_code, status_code)

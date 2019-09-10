@@ -15,7 +15,7 @@ class PersonsLists:
 
     def update(self, pl_id, name):
         data = {'name': name}
-        return self.http_client.put('v1/lists/persons/{}/'.format(pl_id), data=data)
+        return self.http_client.patch('v1/lists/persons/{}/'.format(pl_id), data=data)
 
     def delete(self, pl_id):
         return self.http_client.delete('v1/lists/person/{}/'.format(pl_id))
@@ -28,10 +28,12 @@ class PersonsLists:
         return self.http_client.post('v1/lists/persons/{}/idxids/'.format(pl_id), data=data)
 
     def delete_idxids(self, pl_id, idxids):
-        return self.http_client.delete('v1/lists/persons/{}/idxids/'.format(pl_id), data=idxids)
+        data = {'idxids': idxids}
+        return self.http_client.delete('v1/lists/persons/{}/idxids/'.format(pl_id), data=data)
 
     def exended_idxids_list(self, pl_id, idxids):
-        return self.http_client.get('v1/lists/persons/{}/idxids/extended/'.format(pl_id), data=idxids)
+        data = {'idxids': idxids}
+        return self.http_client.get('v1/lists/persons/{}/idxids/extended/'.format(pl_id), data=data)
 
     def delete_idxids_in_lists(self, list_ids, idxids):
         data = {
@@ -51,7 +53,8 @@ class PersonsLists:
         return self.http_client.delete('v1/lists/persons/{}/idxids/all/'.format(idxid))
 
     def delete_idxid_from_lists(self, list_ids, idxid):
-        return self.http_client.post('v1/lists/persons/idxids/{}/'.format(idxid), data=list_ids)
+        data = {'lists_ids': list_ids}
+        return self.http_client.post('v1/lists/persons/idxids/{}/'.format(idxid), data=data)
 
     def delete_idxid_from_all_lists(self, idxid):
         return self.http_client.post('v1/lists/persons/idxids/{}/all/'.format(idxid))

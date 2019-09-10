@@ -109,6 +109,6 @@ class Client(object):
         return cls(self.http_client)
 
     @property
-    def person_lists(self):
+    def persons_lists(self):
         cls = self.dynamic_import('identixone.api.persons_lists', 'PersonsLists')
         return cls(self.http_client)
