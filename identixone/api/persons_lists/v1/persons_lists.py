@@ -18,7 +18,7 @@ class PersonsLists:
         return self.http_client.patch('v1/lists/persons/{}/'.format(pl_id), data=data)
 
     def delete(self, pl_id):
-        return self.http_client.delete('v1/lists/person/{}/'.format(pl_id))
+        return self.http_client.delete('v1/lists/persons/{}/'.format(pl_id))
 
     def idxids_list(self, pl_id):
         return self.http_client.get('v1/lists/persons/{}/idxids/'.format(pl_id))
