@@ -107,3 +107,8 @@ class Client(object):
     def utility(self):
         cls = self.dynamic_import('identixone.api.utility', 'Utility')
         return cls(self.http_client)
+
+    @property
+    def persons_lists(self):
+        cls = self.dynamic_import('identixone.api.persons_lists', 'PersonsLists')
+        return cls(self.http_client)
