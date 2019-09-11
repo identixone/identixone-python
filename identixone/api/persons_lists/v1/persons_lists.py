@@ -49,12 +49,12 @@ class PersonsLists:
         }
         return self.http_client.post('v1/lists/persons/idxids/', data=data)
 
-    def delete_all_idxids(self, idxid):
-        return self.http_client.delete('v1/lists/persons/{}/idxids/all/'.format(idxid))
+    def delete_all_idxids(self,  pl_id):
+        return self.http_client.delete('v1/lists/persons/{}/idxids/all/'.format(pl_id))
 
     def delete_idxid_from_lists(self, list_ids, idxid):
         data = {'lists_ids': list_ids}
-        return self.http_client.post('v1/lists/persons/idxids/{}/'.format(idxid), data=data)
+        return self.http_client.delete('v1/lists/persons/idxids/{}/'.format(idxid), data=data)
 
     def delete_idxid_from_all_lists(self, idxid):
-        return self.http_client.post('v1/lists/persons/idxids/{}/all/'.format(idxid))
+        return self.http_client.delete('v1/lists/persons/idxids/{}/all/'.format(idxid))
